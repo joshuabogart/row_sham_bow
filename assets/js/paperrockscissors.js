@@ -1,39 +1,59 @@
-// Creating variables
-var playerOne = prompt("Rock, paper or scissors?", "r, p, or s");
+// Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+var computerChoices = ["r", "p", "s"];
 
-var toolArray = ["r", "p", "s"];
+// Creating variables to hold the number of wins, losses, and ties. They start at 0.
+var wins = 0;
+var losses = 0;
+var ties = 0;
+var stats = [wins, losses, ties];
 
-var win = 0;
-var lose = 0;
-var tie = 0;
+// Randomly chooses a choice from the options array. This is the Computer's guess.
 
-// To be assigned with random math function
-var playerTwo = toolArray[Math.floor(Math.random() * 3)];
+function computerSelection() {
+  var computerGuess =
+    computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  return computerGuess;
+}
 
-if (playerOne === 'r' && playerTwo === 'p') {
-  lose += 1;
-}
-if (playerOne === 'r' && playerTwo === 's') {
-  win += 1;
-}
-if (playerOne === 'r' && playerTwo === 'r') {
-  tie += 1;
-}
-if (playerOne === 'p' && playerTwo === 's') {
-  lose += 1;
-}
-if (playerOne === 'p' && playerTwo === 'r') {
-  win += 1;
-}
-if (playerOne === 'p' && playerTwo === 'p') {
-  tie += 1;
-}
-if (playerOne === 's' && playerTwo === 's') {
-  tie += 1;
-}
-if (playerOne === 's' && playerTwo === 'r') {
-  lose += 1;
-}
-if (playerOne === 's' && playerTwo === 'p') {
-  win += 1;
+function finalStats() {}
+
+function playGame() {
+  for (var i = 0; i < 4; i++) {
+    computerSelection();
+
+    // Collect the user's response and convert to lower case.
+    var userGuess = prompt("Enter r, p, or s to play!");
+    userGuess = userGuess.toLowerCase();
+
+    // Only run game logic if user chose a valid option
+    if (userGuess === "r" || userGuess === "p" || userGuess === "s") {
+      alert("The computer chose " + computerGuess);
+
+      // Win/lose conditions:
+      if (
+        (userGuess === "r" && computerGuess === "s") ||
+        (userGuess === "s" && computerGuess === "p") ||
+        (userGuess === "p" && computerGuess === "r")
+      ) {
+        wins++;
+        alert("You've won " + wins + " time(s)!");
+      } else if (userGuess === computerGuess) {
+        ties++;
+        alert("You've tied " + ties + " time(s).");
+      } else {
+        losses++;
+        alert("You've lost " + losses + " time(s).");
+      }
+    }
+  }
+
+  // When the game is over, alert the totals to the user. We can use the \n character to make a line break.
+  alert(
+    "Total wins: " +
+      wins +
+      "\nTotal ties: " +
+      ties +
+      "\nTotal losses: " +
+      losses
+  );
 }
