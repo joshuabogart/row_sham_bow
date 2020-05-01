@@ -8,32 +8,32 @@ var lose = 0;
 var tie = 0;
 
 // To be assigned with random math function
-var playerTwo;
+var playerTwo = toolArray[Math.floor(Math.random() * 3)];
 
-if (playerOne === r && playerTwo === p) {
+if (playerOne === 'r' && playerTwo === 'p') {
+  lose += 1;
+}
+if (playerOne === 'r' && playerTwo === 's') {
   win += 1;
 }
-if (playerOne === r && playerTwo === s) {
-  lose += 1;
-}
-if (playerOne === r && playerTwo === r) {
+if (playerOne === 'r' && playerTwo === 'r') {
   tie += 1;
 }
-if (playerOne === p && playerTwo === s) {
+if (playerOne === 'p' && playerTwo === 's') {
   lose += 1;
 }
-if (playerOne === p && playerTwo === r) {
+if (playerOne === 'p' && playerTwo === 'r') {
   win += 1;
 }
-if (playerOne === p && playerTwo === p) {
+if (playerOne === 'p' && playerTwo === 'p') {
   tie += 1;
 }
-if (playerOne === s && playerTwo === s) {
+if (playerOne === 's' && playerTwo === 's') {
   tie += 1;
 }
-if (playerOne === s && playerTwo === r) {
+if (playerOne === 's' && playerTwo === 'r') {
   lose += 1;
 }
-if (playerOne === s && playerTwo === p) {
+if (playerOne === 's' && playerTwo === 'p') {
   win += 1;
 }
